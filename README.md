@@ -198,3 +198,5 @@ Tu deviens un **codeur-closer**, un **IA designer**, un **opérateur de solution
 ---
 
 **One need. One prompt. OneShotClose.**
+
+![Aperçu de l'interface OneShotClose](template.jpeg)
