@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+body, #root, .osc-root {
+  background: #101624 !important;
+  color: #f3f6fa !important;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -44,15 +49,15 @@
 /* Ajout d'un style moderne inspiré du modèle fourni */
 .osc-root {
   font-family: 'Inter', Arial, sans-serif;
-  background: linear-gradient(135deg, #f7f9fb 60%, #e3eaff 100%);
+  background: linear-gradient(135deg, #0d1117 60%, #141b2d 100%) !important;
   min-height: 100vh;
 }
 .osc-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #0a2240;
-  color: #fff;
+  background: #0a2240 !important;
+  color: #f3f6fa !important;
   padding: 1.5rem 0 1.5rem 0;
   border-radius: 0 0 32px 32px;
   box-shadow: 0 4px 24px #0a224033;
@@ -99,8 +104,8 @@
   border-bottom: 2px solid #7ea6ff;
 }
 .osc-cart-btn {
-  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%) !important;
+  color: #fff !important;
   border: none;
   border-radius: 8px;
   padding: 0.5rem 1.2rem;
@@ -111,7 +116,7 @@
   transition: background 0.2s, transform 0.1s;
 }
 .osc-cart-btn:hover {
-  background: #1741a6;
+  background: #1741a6 !important;
   transform: scale(1.07);
 }
 .osc-hero {
@@ -151,8 +156,8 @@
   z-index: 1;
 }
 .osc-cta {
-  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%) !important;
+  color: #fff !important;
   border: none;
   border-radius: 10px;
   padding: 1.1rem 2.5rem;
@@ -165,7 +170,7 @@
   z-index: 1;
 }
 .osc-cta:hover {
-  background: #1741a6;
+  background: #1741a6 !important;
   transform: scale(1.05);
 }
 .osc-services {
@@ -178,32 +183,37 @@
   justify-content: center;
 }
 .osc-service-card {
-  background: #fff;
+  background: linear-gradient(145deg, #182338 0%, #141b2d 100%) !important;
+  color: #f3f6fa !important;
   border-radius: 20px;
   box-shadow: 0 4px 24px #2563eb11;
-  padding: 2.2rem 1.7rem;
+  padding: 2.5rem 2rem !important;
   min-width: 220px;
   max-width: 260px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.15s, box-shadow 0.15s;
-  border: 1.5px solid #e3eaff;
+  transition: transform 0.3s, box-shadow 0.3s !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
 }
 .osc-service-card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 8px 32px #2563eb22;
-  border: 1.5px solid #2563eb44;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 8px 30px rgba(37,99,235,0.2) !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+}
+.osc-service-card h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
 }
 .osc-service-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.7rem;
+  font-size: 2.8rem !important;
+  filter: drop-shadow(0 2px 8px rgba(37,99,235,0.3));
 }
 .osc-service-card button {
   margin-top: 1.2rem;
-  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%) !important;
+  color: #fff !important;
   border: none;
   border-radius: 8px;
   padding: 0.6rem 1.4rem;
@@ -214,15 +224,13 @@
   transition: background 0.2s, transform 0.1s;
 }
 .osc-service-card button:hover {
-  background: #1741a6;
+  background: #1741a6 !important;
   transform: scale(1.07);
 }
 .osc-how {
   margin: 3rem 0 2.5rem 0;
-  background: #fff;
-  border-radius: 18px;
-  padding: 2.2rem 1.2rem;
-  box-shadow: 0 2px 12px #2563eb11;
+  background: linear-gradient(145deg, #182338 0%, #141b2d 100%) !important;
+  padding: 3rem 2rem !important;
 }
 .osc-how-steps {
   display: flex;
@@ -232,14 +240,14 @@
   flex-wrap: wrap;
 }
 .osc-how-steps > div {
-  background: #f1f5fa;
-  border-radius: 14px;
-  padding: 1.2rem 1.7rem;
-  min-width: 180px;
-  text-align: center;
-  font-size: 1.08rem;
-  font-weight: 500;
-  box-shadow: 0 2px 8px #2563eb11;
+  background: rgba(255,255,255,0.05) !important;
+  padding: 1.8rem !important;
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: transform 0.3s;
+}
+.osc-how-steps > div:hover {
+  transform: translateY(-3px);
+  background: rgba(255,255,255,0.08) !important;
 }
 .osc-business {
   display: flex;
@@ -251,6 +259,7 @@
 .osc-business > div {
   flex: 1;
   background: #fff;
+  color: #0d1117;
   border-radius: 18px;
   padding: 2.2rem 1.7rem;
   box-shadow: 0 2px 12px #2563eb11;
@@ -258,7 +267,7 @@
 }
 .osc-business-highlight {
   background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%);
-  color: #fff;
+  color: rgb(0, 0, 0)000;
   border-radius: 18px;
   padding: 2.2rem 1.7rem;
   font-size: 1.15rem;
@@ -277,6 +286,7 @@
 }
 .osc-examples-list > div {
   background: #fff;
+  color: #0d1117;
   border-radius: 14px;
   padding: 1.2rem 2.2rem;
   box-shadow: 0 2px 8px #2563eb11;
@@ -288,6 +298,7 @@
   top: 90px;
   right: 40px;
   background: #fff;
+  color: #0d1117;
   border-radius: 18px;
   box-shadow: 0 8px 32px #2563eb22;
   padding: 2.2rem 1.7rem;
@@ -301,6 +312,8 @@
 }
 .osc-cart-modal h3 {
   margin-top: 0;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
 }
 .osc-cart-modal ul {
   list-style: none;
@@ -334,8 +347,8 @@
   font-size: 1.1rem;
 }
 .osc-cart-close {
-  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%);
-  color: #fff;
+  background: linear-gradient(90deg, #2563eb 60%, #1741a6 100%) !important;
+  color: #fff !important;
   border: none;
   border-radius: 8px;
   padding: 0.7rem 1.4rem;
@@ -348,12 +361,12 @@
   transition: background 0.2s, transform 0.1s;
 }
 .osc-cart-close:hover {
-  background: #1741a6;
+  background: #1741a6 !important;
   transform: scale(1.03);
 }
 .osc-footer {
-  background: #0a2240;
-  color: #e6eaf3;
+  background: #0a2240 !important;
+  color: #f3f6fa !important;
   padding: 3rem 0 1.2rem 0;
   margin-top: 3rem;
   border-radius: 32px 32px 0 0;
@@ -405,7 +418,7 @@
 .osc-footer-links h4 {
   margin-bottom: 0.7rem;
   font-size: 1.1rem;
-  color: #a5c8ff;
+  color: #a5c8ff !important;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -418,14 +431,14 @@
   margin-bottom: 0.5rem;
 }
 .osc-footer-links a {
-  color: #e6eaf3;
+  color: #f3f6fa !important;
   text-decoration: none;
   transition: color 0.2s;
   font-size: 1.05rem;
   font-weight: 500;
 }
 .osc-footer-links a:hover {
-  color: #7ea6ff;
+  color: #7ea6ff !important;
   text-decoration: underline;
 }
 .osc-footer-maps {
@@ -435,7 +448,7 @@
 .osc-footer-maps h4 {
   margin-bottom: 0.7rem;
   font-size: 1.1rem;
-  color: #a5c8ff;
+  color: #a5c8ff !important;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
@@ -447,7 +460,7 @@
   margin-bottom: 0.5rem;
 }
 .osc-footer-maps p {
-  color: #b6c3d9;
+  color: #b6c3d9 !important;
   font-size: 1.02rem;
   margin-top: 0.5rem;
 }
@@ -488,7 +501,7 @@
     border-radius: 0 0 18px 18px;
   }
   .osc-hero {
-    padding: 2.2rem 1rem 1.5rem 1rem;
+    padding: 3rem 1.5rem !important;
     border-radius: 18px;
   }
   .osc-cart-modal {
@@ -520,4 +533,21 @@
     max-width: 95vw;
     padding: 1.2rem 0.5rem;
   }
+}
+.osc-stripe-btn {
+  background: linear-gradient(90deg, #00c3ff 60%, #004aad 100%) !important;
+  color: #fff !important;
+  border: none;
+  border-radius: 7px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  font-weight: 600;
+  margin-left: 1rem;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 2px 8px #00c3ff22;
+}
+.osc-stripe-btn:hover {
+  background: #004aad !important;
+  transform: scale(1.07);
 }

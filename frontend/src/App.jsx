@@ -144,6 +144,25 @@ function App() {
                 <li key={idx}>
                   {item.name} - {item.price}€
                   <button onClick={() => removeFromCart(idx)}>Retirer</button>
+                  <a
+                    href={
+                      item.id === 1
+                        ? 'https://buy.stripe.com/test_closing_script'
+                        : item.id === 2
+                        ? 'https://buy.stripe.com/test_verbal_pitch'
+                        : item.id === 3
+                        ? 'https://buy.stripe.com/test_offer_refinement'
+                        : item.id === 4
+                        ? 'https://buy.stripe.com/test_objection_handling'
+                        : '#'
+                    }
+                    className="osc-stripe-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{marginLeft:8}}
+                  >
+                    Payer avec Stripe
+                  </a>
                 </li>
               ))}
             </ul>
