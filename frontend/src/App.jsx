@@ -32,9 +32,34 @@ const SERVICES = [
   },
 ];
 
+function BrandLogo() {
+  return (
+    <div className="osc-logo">
+      <img src="/logo-osc.svg" alt="OneShotClose" style={{height:36,verticalAlign:'middle',marginRight:8}}/>
+      <span style={{fontWeight:900,letterSpacing:1}}>OneShotClose</span>
+    </div>
+  );
+}
+
+function ContactForm({onClose}) {
+  return (
+    <div className="osc-contact-modal">
+      <h3>Contact / Demande personnalisée</h3>
+      <form className="osc-contact-form" onSubmit={e=>{e.preventDefault();alert('Message envoyé !');onClose();}}>
+        <input type="text" placeholder="Nom" required />
+        <input type="email" placeholder="Email" required />
+        <textarea placeholder="Votre message ou besoin" required />
+        <button type="submit">Envoyer</button>
+        <button type="button" className="osc-contact-close" onClick={onClose}>Annuler</button>
+      </form>
+    </div>
+  );
+}
+
 function App() {
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
+  const [showContact, setShowContact] = useState(false);
 
   const addToCart = (service) => {
     setCart((prev) => [...prev, service]);
@@ -49,7 +74,7 @@ function App() {
   return (
     <div className="osc-root">
       <header className="osc-header">
-        <div className="osc-logo">OneShotClose</div>
+        <BrandLogo />
         <nav>
           <a href="#services">Services</a>
           <a href="#how">Fonctionnement</a>
@@ -58,13 +83,16 @@ function App() {
           <button className="osc-cart-btn" onClick={() => setShowCart(!showCart)}>
             🛒 {cart.length}
           </button>
+          <button className="osc-contact-btn" onClick={()=>setShowContact(true)}>
+            Contact
+          </button>
         </nav>
       </header>
       <main>
         <section className="osc-hero">
-          <h1>One need. One solution.<br/>In one closing.</h1>
+          <h1><span className="osc-gradient-text">One need. One solution.<br/>In one closing.</span></h1>
           <p>En moins de 48h, nous identifions les blocages commerciaux et livrons un script, un appel ou une stratégie pour closer la vente.</p>
-          <button className="osc-cta">Essayer OneShotClose</button>
+          <button className="osc-cta" onClick={()=>setShowContact(true)}>Essayer OneShotClose</button>
         </section>
         <section id="services" className="osc-services">
           <h2>Services</h2>
@@ -124,6 +152,7 @@ function App() {
           <button className="osc-cart-close" onClick={() => setShowCart(false)}>Fermer</button>
         </div>
       )}
+      {showContact && <ContactForm onClose={()=>setShowContact(false)} />}
     </div>
   );
 }
