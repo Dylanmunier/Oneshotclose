@@ -12,7 +12,6 @@ export default function App() {
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
 
-  // Authentification Supabase (Google)
   useEffect(() => {
     supabase.auth.getUser().then(({ data: { user } }) => setUser(user));
     const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
@@ -23,7 +22,6 @@ export default function App() {
     };
   }, []);
 
-  // Récupération temps réel des messages
   useEffect(() => {
     if (!user) return;
     setLoading(true);
@@ -36,7 +34,6 @@ export default function App() {
         setMessages(data || []);
         setLoading(false);
       });
-    // Abonnement temps réel
     const sub = supabase
       .channel('messages')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'messages' }, (payload) => {
@@ -48,7 +45,6 @@ export default function App() {
     return () => { supabase.removeChannel(sub); };
   }, [user]);
 
-  // Envoi d’un message texte
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -58,7 +54,6 @@ export default function App() {
     setLoading(false);
   };
 
-  // Enregistrement vocal
   const startRecording = async () => {
     setRecording(true);
     audioChunksRef.current = [];
@@ -71,7 +66,6 @@ export default function App() {
     mediaRecorder.onstop = async () => {
       const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
       setAudioURL(URL.createObjectURL(audioBlob));
-      // Upload audio dans Supabase Storage (optionnel)
       const fileName = `audio_${Date.now()}.webm`;
       const { data, error } = await supabase.storage.from('audios').upload(fileName, audioBlob, { contentType: 'audio/webm' });
       if (!error) {
@@ -93,42 +87,48 @@ export default function App() {
   };
 
   return (
-    <div className="template-bg">
-      <div className="template-card">
-        <img src="/template.jpeg" alt="Aperçu OneShotClose" className="template-img" />
-        <h1 className="template-title">🧠 OneShotClose</h1>
-        <p className="template-desc">Closer digital express & IA de résolution instantanée pour offres bloquées.</p>
+    <div className="modern-bg">
+      <div className="modern-card">
+        <div className="modern-header">
+          <span className="modern-badge">🧠</span>
+          <div>
+            <h1 className="modern-title">OneShotClose</h1>
+            <p className="modern-sub">Générateur de Résolutions Commerciales Instantanées</p>
+          </div>
+        </div>
+        <p className="modern-desc">Closer digital express & IA de résolution instantanée pour offres bloquées.</p>
+        <div className="modern-separator" />
         {!user ? (
-          <button className="cta-btn" onClick={handleLogin}>Se connecter avec Google</button>
+          <button className="modern-btn" onClick={handleLogin}>Se connecter avec Google</button>
         ) : (
           <>
-            <p className="template-user">Bienvenue, {user.email}</p>
-            <button className="cta-btn" onClick={handleLogout}>Se déconnecter</button>
-            <form onSubmit={handleSend} className="template-form">
+            <p className="modern-user">Bienvenue, {user.email}</p>
+            <button className="modern-btn secondary" onClick={handleLogout}>Se déconnecter</button>
+            <form onSubmit={handleSend} className="modern-form">
               <input
                 type="text"
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="Décris ton blocage ou besoin commercial..."
-                className="template-input"
+                className="modern-input"
                 disabled={loading}
               />
-              <button className="cta-btn" type="submit" disabled={loading}>Envoyer</button>
+              <button className="modern-btn" type="submit" disabled={loading}>Envoyer</button>
             </form>
-            <div style={{ marginBottom: 16 }}>
+            <div style={{ marginBottom: 16, width: '100%' }}>
               {!recording ? (
-                <button className="cta-btn" onClick={startRecording} style={{ background: '#38a169' }}>🎤 Envoyer un message vocal</button>
+                <button className="modern-btn green" onClick={startRecording}>🎤 Message vocal</button>
               ) : (
-                <button className="cta-btn" onClick={stopRecording} style={{ background: '#e53e3e' }}>⏹️ Stop</button>
+                <button className="modern-btn red" onClick={stopRecording}>⏹️ Stop</button>
               )}
-              {audioURL && <audio src={audioURL} controls style={{ marginTop: 8 }} />}
+              {audioURL && <audio src={audioURL} controls style={{ marginTop: 8, width: '100%' }} />}
             </div>
-            <div className="template-history">
-              <h2>📝 Historique de vos demandes</h2>
+            <div className="modern-history">
+              <h2>📝 Historique</h2>
               {loading && <p>Chargement...</p>}
               <ul>
                 {messages.map(msg => (
-                  <li key={msg.id} className="template-message">
+                  <li key={msg.id} className="modern-message">
                     <b>{new Date(msg.created_at).toLocaleString()} :</b> {msg.content}
                     {msg.solution_audio && (
                       <>
