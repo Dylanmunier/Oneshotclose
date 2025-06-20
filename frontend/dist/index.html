@@ -4,11 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OneShotClose</title>
-    <link rel="stylesheet" href="/public/theme.css" />
-    <script type="module" crossorigin src="/assets/index-CPr7IZFn.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CH3pfQcj.css">
+    <link rel="stylesheet" href="/theme.css" />
+    <style>
+      body { background: #f7f8fa; }
+      .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 2rem;
+      }
+      .hero img {
+        max-width: 320px;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        margin-bottom: 2rem;
+      }
+      .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+      }
+      .hero p {
+        font-size: 1.1rem;
+        color: #2b6cb0;
+        margin-bottom: 1.5rem;
+      }
+      .cta-btn {
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        background: #2b6cb0;
+        color: #fff;
+        border: none;
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-bottom: 2rem;
+      }
+      .features {
+        max-width: 700px;
+        margin: 2rem auto;
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+        padding: 2rem;
+      }
+      .features h2 {
+        color: #2b6cb0;
+        margin-bottom: 1rem;
+      }
+      .features ul {
+        padding-left: 1.2rem;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div class="hero">
+      <img src="/template.jpeg" alt="Aperçu OneShotClose" />
+      <h1>🧠 OneShotClose — Générateur de Résolutions Commerciales Instantanées</h1>
+      <p>Le SaaS IA modulaire pour propulser la Martinique dans l’ère numérique</p>
+      <button class="cta-btn">Lancer mon IA</button>
+    </div>
+    <div class="features">
+      <h2>🎯 Mission</h2>
+      <ul>
+        <li>Exprimez un blocage ou besoin commercial (texte ou audio)</li>
+        <li>Diagnostic, script de réponse, plan de conversion générés automatiquement</li>
+        <li>Livraison immédiate de la solution (PDF, audio, lien sécurisé)</li>
+      </ul>
+      <h2>🧩 Fonctionnalités</h2>
+      <ul>
+        <li>Dashboard multi-apps modulables</li>
+        <li>Jumeau numérique IA par utilisateur</li>
+        <li>Assistant IA hybride (Gemini API + IA locale)</li>
+        <li>Génération de solutions/projets/rapports par prompt</li>
+        <li>Facturation automatique, monitoring IA, support 24h/24</li>
+      </ul>
+      <h2>🛠️ Stack</h2>
+      <ul>
+        <li>React + ViteJS (frontend)</li>
+        <li>Node.js + Python (backend/IA)</li>
+        <li>Supabase (auth, base, stockage)</li>
+        <li>Gemini API, LLM open source</li>
+      </ul>
+    </div>
   </body>
 </html>
