@@ -1,6 +1,6 @@
-// Utilitaire pour requêtes vers le backend Node.js
+// Utilitaire pour requêtes vers le backend Render
 export async function fetchFromAPI(path, options = {}) {
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`https://oneshotclose.onrender.com/api${path}`, {
     ...options,
     headers: {
       'Content-Type': 'application/json',
