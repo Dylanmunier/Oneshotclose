@@ -153,6 +153,45 @@ function App() {
         </div>
       )}
       {showContact && <ContactForm onClose={()=>setShowContact(false)} />}
+      <footer className="osc-footer">
+        <div className="osc-footer-content">
+          <div className="osc-footer-brand">
+            <BrandLogo />
+            <p>OneShotClose aide entreprises, freelances et agences à closer plus vite grâce à l’IA et l’humain.</p>
+            <div className="osc-footer-socials">
+              <a href="#" aria-label="LinkedIn"><img src="/linkedin.svg" alt="LinkedIn" /></a>
+              <a href="#" aria-label="Twitter"><img src="/twitter.svg" alt="Twitter" /></a>
+              <a href="#" aria-label="Instagram"><img src="/instagram.svg" alt="Instagram" /></a>
+            </div>
+          </div>
+          <div className="osc-footer-links">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#how">Fonctionnement</a></li>
+              <li><a href="#business">Entreprises</a></li>
+              <li><a href="#examples">Exemples</a></li>
+              <li><a href="#" onClick={e=>{e.preventDefault();setShowContact(true);}}>Contact</a></li>
+            </ul>
+          </div>
+          <div className="osc-footer-maps">
+            <h4>Nous trouver</h4>
+            <iframe
+              title="Localisation OneShotClose"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=2.333%2C48.86%2C2.36%2C48.87&amp;layer=mapnik"
+              style={{border:0,width:'100%',height:'160px',borderRadius:'12px'}}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <p>Paris, France</p>
+          </div>
+        </div>
+        <div className="osc-footer-bottom">
+          <span>© {new Date().getFullYear()} OneShotClose. Tous droits réservés.</span>
+          <a href="#">Mentions légales</a>
+        </div>
+      </footer>
     </div>
   );
 }

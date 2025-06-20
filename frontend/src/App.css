@@ -338,6 +338,124 @@
   background: #1741a6;
   transform: scale(1.03);
 }
+.osc-footer {
+  background: #0a2240;
+  color: #e6eaf3;
+  padding: 3rem 0 1.2rem 0;
+  margin-top: 3rem;
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0 -4px 24px #0a224033;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.osc-footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.osc-footer-brand {
+  flex: 1 1 260px;
+  min-width: 220px;
+}
+.osc-footer-brand p {
+  margin: 1rem 0 1.5rem 0;
+  font-size: 1.08rem;
+  color: #b6c3d9;
+  line-height: 1.6;
+}
+.osc-footer-socials {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 0.5rem;
+}
+.osc-footer-socials img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(0.95) drop-shadow(0 2px 8px #2563eb55);
+  transition: filter 0.2s;
+}
+.osc-footer-socials img:hover {
+  filter: brightness(0) invert(0.7) drop-shadow(0 2px 8px #2563eb);
+}
+.osc-footer-links {
+  flex: 1 1 180px;
+  min-width: 160px;
+}
+.osc-footer-links h4 {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  color: #a5c8ff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.osc-footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.osc-footer-links li {
+  margin-bottom: 0.5rem;
+}
+.osc-footer-links a {
+  color: #e6eaf3;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+.osc-footer-links a:hover {
+  color: #7ea6ff;
+  text-decoration: underline;
+}
+.osc-footer-maps {
+  flex: 1 1 320px;
+  min-width: 220px;
+}
+.osc-footer-maps h4 {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+  color: #a5c8ff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.osc-footer-maps iframe {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 0.5rem;
+}
+.osc-footer-maps p {
+  color: #b6c3d9;
+  font-size: 1.02rem;
+  margin-top: 0.5rem;
+}
+.osc-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 2rem auto 0 auto;
+  padding: 0 2rem;
+  font-size: 1.01rem;
+  color: #b6c3d9;
+  border-top: 1px solid #233a5e;
+  padding-top: 1.2rem;
+}
+.osc-footer-bottom a {
+  color: #a5c8ff;
+  font-weight: 600;
+  text-decoration: underline;
+  margin-left: 1.5rem;
+}
 @media (max-width: 900px) {
   .osc-services-list, .osc-examples-list, .osc-how-steps, .osc-business {
     flex-direction: column;
@@ -360,6 +478,17 @@
     right: 10px;
     min-width: 90vw;
     padding: 1.2rem 0.7rem;
+  }
+  .osc-footer-content {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  .osc-footer-bottom {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 0 1rem;
+    text-align: center;
   }
 }
 @media (max-width: 600px) {
