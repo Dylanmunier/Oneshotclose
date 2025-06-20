@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
 import { supabase } from './supabaseClient';
 
@@ -7,6 +7,10 @@ export default function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [audioURL, setAudioURL] = useState(null);
+  const [recording, setRecording] = useState(false);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
 
   // Authentification Supabase (Google)
   useEffect(() => {
@@ -44,7 +48,7 @@ export default function App() {
     return () => { supabase.removeChannel(sub); };
   }, [user]);
 
-  // Envoi d’un message
+  // Envoi d’un message texte
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -54,10 +58,36 @@ export default function App() {
     setLoading(false);
   };
 
+  // Enregistrement vocal
+  const startRecording = async () => {
+    setRecording(true);
+    audioChunksRef.current = [];
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const mediaRecorder = new window.MediaRecorder(stream);
+    mediaRecorderRef.current = mediaRecorder;
+    mediaRecorder.ondataavailable = (e) => {
+      audioChunksRef.current.push(e.data);
+    };
+    mediaRecorder.onstop = async () => {
+      const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+      setAudioURL(URL.createObjectURL(audioBlob));
+      // Upload audio dans Supabase Storage (optionnel)
+      const fileName = `audio_${Date.now()}.webm`;
+      const { data, error } = await supabase.storage.from('audios').upload(fileName, audioBlob, { contentType: 'audio/webm' });
+      if (!error) {
+        await supabase.from('messages').insert({ user_id: user.id, content: '[Audio]', solution_audio: fileName });
+      }
+    };
+    mediaRecorder.start();
+  };
+  const stopRecording = () => {
+    setRecording(false);
+    mediaRecorderRef.current && mediaRecorderRef.current.stop();
+  };
+
   const handleLogin = async () => {
     await supabase.auth.signInWithOAuth({ provider: 'google' });
   };
-
   const handleLogout = async () => {
     await supabase.auth.signOut();
   };
@@ -67,7 +97,7 @@ export default function App() {
       <div className="template-card">
         <img src="/template.jpeg" alt="Aperçu OneShotClose" className="template-img" />
         <h1 className="template-title">🧠 OneShotClose</h1>
-        <p className="template-desc">Le SaaS IA modulaire pour propulser la Martinique dans l’ère numérique</p>
+        <p className="template-desc">Closer digital express & IA de résolution instantanée pour offres bloquées.</p>
         {!user ? (
           <button className="cta-btn" onClick={handleLogin}>Se connecter avec Google</button>
         ) : (
@@ -85,6 +115,14 @@ export default function App() {
               />
               <button className="cta-btn" type="submit" disabled={loading}>Envoyer</button>
             </form>
+            <div style={{ marginBottom: 16 }}>
+              {!recording ? (
+                <button className="cta-btn" onClick={startRecording} style={{ background: '#38a169' }}>🎤 Envoyer un message vocal</button>
+              ) : (
+                <button className="cta-btn" onClick={stopRecording} style={{ background: '#e53e3e' }}>⏹️ Stop</button>
+              )}
+              {audioURL && <audio src={audioURL} controls style={{ marginTop: 8 }} />}
+            </div>
             <div className="template-history">
               <h2>📝 Historique de vos demandes</h2>
               {loading && <p>Chargement...</p>}
@@ -92,6 +130,12 @@ export default function App() {
                 {messages.map(msg => (
                   <li key={msg.id} className="template-message">
                     <b>{new Date(msg.created_at).toLocaleString()} :</b> {msg.content}
+                    {msg.solution_audio && (
+                      <>
+                        <br />
+                        <audio src={supabase.storage.from('audios').getPublicUrl(msg.solution_audio).data.publicUrl} controls />
+                      </>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -49,6 +49,10 @@ ul {
   font-size: 1.1rem;
   cursor: pointer;
   margin-bottom: 1.5rem;
+  transition: background 0.2s;
+}
+.cta-btn:active {
+  background: #234e7d;
 }
 .template-user {
   margin-bottom: 1rem;
