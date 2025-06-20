@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import { supabase } from './supabaseClient';
-import { fetchFromAPI } from './api';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -63,48 +62,42 @@ export default function App() {
     await supabase.auth.signOut();
   };
 
-  if (!user) {
-    return (
-      <div className="container">
-        <div className="hero">
-          <img src="/template.jpeg" alt="Aperçu OneShotClose" />
-          <h1>🧠 OneShotClose</h1>
-          <p>Connecte-toi pour utiliser l’IA commerciale</p>
-          <button className="cta-btn" onClick={handleLogin}>Se connecter avec Google</button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="container">
-      <div className="hero">
-        <img src="/template.jpeg" alt="Aperçu OneShotClose" />
-        <h1>🧠 OneShotClose</h1>
-        <p>Bienvenue, {user.email}</p>
-        <button className="cta-btn" onClick={handleLogout}>Se déconnecter</button>
-      </div>
-      <form onSubmit={handleSend} style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
-        <input
-          type="text"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          placeholder="Décris ton blocage ou besoin commercial..."
-          style={{ flex: 1, padding: 12, borderRadius: 8, border: '1px solid #ddd' }}
-          disabled={loading}
-        />
-        <button className="cta-btn" type="submit" disabled={loading}>Envoyer</button>
-      </form>
-      <div className="features">
-        <h2>📝 Historique de vos demandes</h2>
-        {loading && <p>Chargement...</p>}
-        <ul>
-          {messages.map(msg => (
-            <li key={msg.id} style={{ marginBottom: 12 }}>
-              <b>{new Date(msg.created_at).toLocaleString()} :</b> {msg.content}
-            </li>
-          ))}
-        </ul>
+    <div className="template-bg">
+      <div className="template-card">
+        <img src="/template.jpeg" alt="Aperçu OneShotClose" className="template-img" />
+        <h1 className="template-title">🧠 OneShotClose</h1>
+        <p className="template-desc">Le SaaS IA modulaire pour propulser la Martinique dans l’ère numérique</p>
+        {!user ? (
+          <button className="cta-btn" onClick={handleLogin}>Se connecter avec Google</button>
+        ) : (
+          <>
+            <p className="template-user">Bienvenue, {user.email}</p>
+            <button className="cta-btn" onClick={handleLogout}>Se déconnecter</button>
+            <form onSubmit={handleSend} className="template-form">
+              <input
+                type="text"
+                value={input}
+                onChange={e => setInput(e.target.value)}
+                placeholder="Décris ton blocage ou besoin commercial..."
+                className="template-input"
+                disabled={loading}
+              />
+              <button className="cta-btn" type="submit" disabled={loading}>Envoyer</button>
+            </form>
+            <div className="template-history">
+              <h2>📝 Historique de vos demandes</h2>
+              {loading && <p>Chargement...</p>}
+              <ul>
+                {messages.map(msg => (
+                  <li key={msg.id} className="template-message">
+                    <b>{new Date(msg.created_at).toLocaleString()} :</b> {msg.content}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
