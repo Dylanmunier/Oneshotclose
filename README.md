@@ -199,12 +199,12 @@ Tu deviens un **codeur-closer**, un **IA designer**, un **opérateur de solution
 # 🧠 Vision augmentée (NumaTwin)
 
 ## Objectif principal
-Créer une application SaaS intelligente et autonome qui propulse les entreprises locales (Martinique) dans l’ère du numérique, en intégrant des outils IA génératifs (Gemini), une IA locale propriétaire (jumeaux numériques), et une stack logicielle originale évolutive, avec interopérabilité universelle (ordinateurs, téléphones, IoT).
+Créer une application SaaS intelligente et autonome qui propulse les entreprises locales () dans l’ère du numérique, en intégrant des outils IA génératifs (Gemini), une IA locale propriétaire (jumeaux numériques), et une stack logicielle originale évolutive, avec interopérabilité universelle (ordinateurs, téléphones, IoT).
 
 ## 🌐 Résumé de la vision stratégique
 | Élément | Description |
 |---------|-------------|
-| 🎯 But final | Devenir l’acteur numérique N°1 en Martinique pour les entreprises locales |
+| 🎯 But final | Devenir l’acteur numérique N°1 en  pour les entreprises locales |
 | 🔁 Fonctionnement | Une IA centrale (multi-agent) gère, assiste, exécute et interagit sans intervention humaine, sauf configuration |
 | 🧬 Structure modulaire | Chaque outil est une brique indépendante et propriétaire, mais interopérable avec le système |
 | 💡 IA hybride | 1. Gemini API (Google AI Studio) pour génération <br> 2. IA locale privée (assistants IA "Jumeaux Numériques") |
@@ -241,7 +241,7 @@ Créer une application SaaS intelligente et autonome qui propulse les entreprise
 - Gestion logique inspirée du quantique (compression vectorielle, etc.)
 
 ### 🏗️ Ligne directrice de développement (GitHub)
-1. Créer le dépôt principal martinique-saas-hub
+1. Créer le dépôt principal -saas-hub
 2. Mettre en place la stack IA hybride (Gemini + LLM local simple en Python)
 3. Construire le backend (Node.js) avec logique utilisateur + IA + tokens Gemini
 4. Créer le frontend avec interface de chat + dashboard
@@ -258,7 +258,7 @@ Créer une application SaaS intelligente et autonome qui propulse les entreprise
 
 ---
 
-> Cette vision guide la structuration, l’architecture et l’évolution du projet OneShotClose/NumaTwin pour un impact maximal en Martinique et au-delà.
+> Cette vision guide la structuration, l’architecture et l’évolution du projet OneShotClose/NumaTwin pour un impact maximal en  et au-delà.
 
 ---
 
