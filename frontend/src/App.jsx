@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ClientSpace } from './components/ClientSpace';
 import './App.css';
 
 const SERVICES = [
@@ -130,6 +131,51 @@ function App() {
           <div className="osc-examples-list">
             <div>Script de closing pour un produit SaaS</div>
             <div>Présentation de stratégie commerciale</div>
+          </div>
+        </section>
+
+        <ClientSpace />
+
+        <section className="osc-news">
+          <h2>Actualités R&D et Entreprises</h2>
+          <div className="osc-news-grid">
+            <div className="osc-news-card">
+              <div className="osc-news-date">20 Juin 2025</div>
+              <h3>Innovation IA pour le closing</h3>
+              <p>Notre équipe R&D a développé un nouveau modèle d'IA spécialisé dans l'analyse des objections clients, augmentant le taux de conversion de 35%.</p>
+            </div>
+            <div className="osc-news-card">
+              <div className="osc-news-date">15 Juin 2025</div>
+              <h3>Partenariat en Martinique</h3>
+              <p>OneShotClose s'associe avec la CCI Martinique pour accompagner la transformation digitale des entreprises locales.</p>
+            </div>
+            <div className="osc-news-card">
+              <div className="osc-news-date">10 Juin 2025</div>
+              <h3>Success Story</h3>
+              <p>Focus sur Tropical Tech, startup martiniquaise ayant triplé ses ventes grâce à nos scripts de closing personnalisés.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="osc-stats">
+          <h2>Notre Impact</h2>
+          <div className="osc-stats-grid">
+            <div className="osc-stat-card">
+              <div className="osc-stat-number">500+</div>
+              <div className="osc-stat-label">Clients Satisfaits</div>
+            </div>
+            <div className="osc-stat-card">
+              <div className="osc-stat-number">97%</div>
+              <div className="osc-stat-label">Taux de Satisfaction</div>
+            </div>
+            <div className="osc-stat-card">
+              <div className="osc-stat-number">45</div>
+              <div className="osc-stat-label">Entreprises Martiniquaises</div>
+            </div>
+            <div className="osc-stat-card">
+              <div className="osc-stat-number">+180%</div>
+              <div className="osc-stat-label">Croissance Moyenne</div>
+            </div>
           </div>
         </section>
       </main>
